@@ -23,4 +23,13 @@ public class CoffeeMachineFeature {
         assertThat(message).isEqualTo("H::");
     }
 
+    @Test
+    void should_return_C_2_0_when_receiving_coffee_with_2_sugars_order() {
+        Order order = new Order("coffee", 2);
+
+        String message = coffeeMaker.process(order);
+
+        assertThat(message).isEqualTo("C:2:0");
+    }
+
 }

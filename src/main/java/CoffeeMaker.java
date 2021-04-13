@@ -3,6 +3,9 @@ public class CoffeeMaker {
         if (order.getDrinkType().equals("tea")) {
             return "T:1:0";
         }
-        return "H::";
+        if (order.getDrinkType().equals("chocolate")) {
+            return "H::";
+        }
+        return "C:2:0";
     }
 }
