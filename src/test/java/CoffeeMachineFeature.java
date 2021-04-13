@@ -3,33 +3,34 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class CoffeeMachineFeature {
-    private CoffeeMaker coffeeMaker = new CoffeeMaker();
 
     @Test
     void should_return_T_1_0_when_receiving_tea_with_1_sugar_order() {
-        Order order = new Order("tea", 1);
+        Order order = new OrderTea(1);
 
-        String message = coffeeMaker.process(order);
 
-        assertThat(message).isEqualTo("T:1:0");
+        assertThat(order.process()).isEqualTo("T:1:0");
+    }
+
+    @Test
+    void should_return_T_1_0_when_receiving_tea_with_2_sugars_order() {
+        Order order = new OrderTea(2);
+
+        assertThat(order.process()).isEqualTo("T:2:0");
     }
 
     @Test
     void should_return_H_when_receiving_chocolate_with_0_sugar_order() {
-        Order order = new Order("chocolate", 0);
+        Order order = new OrderChocolate(0);
 
-        String message = coffeeMaker.process(order);
-
-        assertThat(message).isEqualTo("H::");
+        assertThat(order.process()).isEqualTo("H::");
     }
 
     @Test
     void should_return_C_2_0_when_receiving_coffee_with_2_sugars_order() {
-        Order order = new Order("coffee", 2);
+        Order order = new OrderCoffee(2);
 
-        String message = coffeeMaker.process(order);
-
-        assertThat(message).isEqualTo("C:2:0");
+        assertThat(order.process()).isEqualTo("C:2:0");
     }
 
 }
