@@ -6,4 +6,12 @@ public class Order {
         this.drinkType = drinkType;
         this.sugar = sugar;
     }
+
+    public String getDrinkType() {
+        return drinkType;
+    }
+
+    public int getSugar() {
+        return sugar;
+    }
 }
