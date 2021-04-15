@@ -19,7 +19,7 @@ public class OrderTranslator {
         String[] orderInstructions = instructions.split(INSTRUCTIONS_SEPARATOR);
 
         if (getDrink(orderInstructions).equals(DrinkType.COFFEE)) {
-            return new CoffeeOrder(0);
+            return new CoffeeOrder(getAmountOfSugar(orderInstructions));
         }
 
         return new TeaOrder(getAmountOfSugar(orderInstructions));

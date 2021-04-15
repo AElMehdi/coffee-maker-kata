@@ -20,4 +20,10 @@ class OrderTranslatorTest {
         Order order = OrderTranslator.toOrder("C::");
         assertThat(order).isEqualTo(new CoffeeOrder(0));
     }
+
+    @Test
+    void should_return_a_coffee_order_with_sugar_when_passed_a_C_1_instruction() {
+        Order order = OrderTranslator.toOrder("C:1:");
+        assertThat(order).isEqualTo(new CoffeeOrder(1));
+    }
 }
