@@ -1,14 +1,14 @@
 public class MachineOrder {
-    private final String drink;
+    private final DrinkType drinkType;
     private final int amountOfSugar;
 
-    public MachineOrder(String drink, int amountOfSugar) {
-        this.drink = drink;
+    public MachineOrder(DrinkType drinkType, int amountOfSugar) {
+        this.drinkType = drinkType;
         this.amountOfSugar = amountOfSugar;
     }
 
-    public String getDrink() {
-        return drink;
+    public DrinkType getDrinkType() {
+        return drinkType;
     }
 
     public int getAmountOfSugar() {

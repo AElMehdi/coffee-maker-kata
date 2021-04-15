@@ -1,13 +1,14 @@
 public class DrinkMaker {
 
+
     public Drink makeFrom(String customerOrder) {
         MachineOrder machineOrder = OrderTranslator.toMachineOrder(customerOrder);
 
-        if (machineOrder.getDrink().equals("T")) {
+        if (machineOrder.getDrinkType().equals(DrinkType.TEA)) {
             return new Tea(machineOrder.getAmountOfSugar());
         }
 
-        if (machineOrder.getDrink().equals("H")) {
+        if (machineOrder.getDrinkType().equals(DrinkType.HOT_CHOCOLATE)) {
             return new HotChocolate(machineOrder.getAmountOfSugar());
         }
 

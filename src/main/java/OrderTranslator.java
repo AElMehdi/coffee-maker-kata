@@ -2,7 +2,7 @@ public class OrderTranslator {
 
     public static MachineOrder toMachineOrder(String customerOrder) {
         String[] orderInstructions = customerOrder.split(":");
-        String drink = orderInstructions[0];
+        DrinkType drink = DrinkType.valueOf(orderInstructions[0]);
 
         int amountOfSugar = 0;
         if (orderInstructions.length > 1) {
