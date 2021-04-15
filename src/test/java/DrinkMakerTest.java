@@ -17,7 +17,12 @@ public class DrinkMakerTest {
         assertThat(drinkMaker.makeFrom("T::")).isEqualTo(new Tea(0));
     }
 
-  @Test
+    @Test
+    void should_serve_a_tea_without_a_stick_when_receive_T() {
+        assertThat(drinkMaker.makeFrom("T::")).isEqualTo(new Tea(0, false));
+    }
+
+    @Test
     void should_make_a_tea_with_1_sugar_when_receive_a_T_1() {
         assertThat(drinkMaker.makeFrom("T:1")).isEqualTo(new Tea(1));
     }

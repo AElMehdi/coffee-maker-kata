@@ -3,10 +3,17 @@ import java.util.Objects;
 public class Tea implements Drink {
 
     private int amountOfSugar;
+    private boolean stick;
+
+    public Tea(int amountOfSugar, boolean stick) {
+        this.amountOfSugar = amountOfSugar;
+        this.stick = stick;
+    }
 
     public Tea(int amountOfSugar) {
-        this.amountOfSugar = amountOfSugar;
+        this(amountOfSugar, false);
     }
+
 
     @Override
     public boolean equals(Object o) {

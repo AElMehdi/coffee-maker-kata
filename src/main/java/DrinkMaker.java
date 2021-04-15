@@ -5,7 +5,7 @@ public class DrinkMaker {
         MachineOrder machineOrder = OrderTranslator.toMachineOrder(customerOrder);
 
         if (machineOrder.getDrinkType().equals(DrinkType.TEA)) {
-            return new Tea(machineOrder.getAmountOfSugar());
+            return new Tea(machineOrder.getAmountOfSugar(), false);
         }
 
         if (machineOrder.getDrinkType().equals(DrinkType.HOT_CHOCOLATE)) {
