@@ -22,6 +22,10 @@ public class OrderTranslator {
             return new CoffeeOrder(getAmountOfSugar(orderInstructions));
         }
 
+        if (getDrink(orderInstructions).equals(DrinkType.HOT_CHOCOLATE)) {
+            return new HotChocolateOrder(getAmountOfSugar(orderInstructions));
+        }
+
         return new TeaOrder(getAmountOfSugar(orderInstructions));
     }
 
