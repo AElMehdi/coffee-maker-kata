@@ -64,6 +64,11 @@ public class DrinkMakerTest {
 
     @Test
     void should_make_a_coffee_with_two_sugars_when_receive_C_2() {
-        assertThat(drinkMaker.makeFrom("C:2")).isEqualTo(new Coffee(2));
+        assertThat(drinkMaker.makeFrom("C:2")).isEqualTo(new Coffee(2, true));
+    }
+
+    @Test
+    void should_serve_a_coffee_with_a_stick_when_ordered_with_sugar_a_C_3() {
+        assertThat(drinkMaker.makeFrom("C:3")).isEqualTo(new Coffee(3, true));
     }
 }

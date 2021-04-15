@@ -13,7 +13,7 @@ public class DrinkMaker {
             return new HotChocolate(amountOfSugar, isStick(machineOrder));
         }
 
-        return new Coffee(amountOfSugar);
+        return new Coffee(amountOfSugar, isStick(machineOrder));
     }
 
     private boolean isStick(MachineOrder machineOrder) {
