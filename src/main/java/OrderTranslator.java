@@ -22,4 +22,8 @@ public class OrderTranslator {
     private static boolean hasSugar(String[] orderInstructions) {
         return orderInstructions.length > 1;
     }
+
+    public static Order toOrder(String instructions) {
+        return new TeaOrder(0);
+    }
 }
