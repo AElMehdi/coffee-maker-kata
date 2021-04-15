@@ -1,32 +1,28 @@
-import static java.lang.Integer.*;
+import static java.lang.Integer.parseInt;
 
 public class OrderTranslator {
 
     public static final String INSTRUCTIONS_SEPARATOR = ":";
 
-    public static MachineOrder toMachineOrder(String customerOrder) {
-        String[] orderInstructions = customerOrder.split(INSTRUCTIONS_SEPARATOR);
+    public static Order toOrder(String instructions) {
+        String[] orderInstructions = instructions.split(INSTRUCTIONS_SEPARATOR);
 
-        return new MachineOrder(getDrink(orderInstructions), getAmountOfSugar(orderInstructions));
+        switch (getDrink(orderInstructions)) {
+            case COFFEE:
+                return new CoffeeOrder(getAmountOfSugar(orderInstructions));
+            case TEA:
+                return new TeaOrder(getAmountOfSugar(orderInstructions));
+            case HOT_CHOCOLATE:
+                return new HotChocolateOrder(getAmountOfSugar(orderInstructions));
+            default:
+                throw new IllegalArgumentException("Oopsy! Looks like something went wrong with your order.");
+        }
+
     }
 
     private static DrinkType getDrink(String[] orderInstructions) {
         String drinkInstruction = orderInstructions[0];
         return DrinkType.from(drinkInstruction);
-    }
-
-    public static Order toOrder(String instructions) {
-        String[] orderInstructions = instructions.split(INSTRUCTIONS_SEPARATOR);
-
-        if (getDrink(orderInstructions).equals(DrinkType.COFFEE)) {
-            return new CoffeeOrder(getAmountOfSugar(orderInstructions));
-        }
-
-        if (getDrink(orderInstructions).equals(DrinkType.HOT_CHOCOLATE)) {
-            return new HotChocolateOrder(getAmountOfSugar(orderInstructions));
-        }
-
-        return new TeaOrder(getAmountOfSugar(orderInstructions));
     }
 
     private static int getAmountOfSugar(String[] orderInstructions) {

@@ -8,6 +8,15 @@ public class TeaOrder implements Order {
     }
 
     @Override
+    public Drink process() {
+        return new Tea(amountOfSugar, isStick());
+    }
+
+    private boolean isStick() {
+        return hasSugar(amountOfSugar);
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
