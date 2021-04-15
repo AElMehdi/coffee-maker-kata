@@ -1,3 +1,7 @@
 public interface Order {
-    String process();
+    Drink process();
+
+    default boolean hasSugar(int amountOfSugar) {
+        return amountOfSugar > 0;
+    }
 }
