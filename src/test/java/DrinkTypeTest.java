@@ -13,4 +13,9 @@ class DrinkTypeTest {
     void should_return_COFFEE_from_C_instruction() {
         assertThat(DrinkType.fromInstruction("C")).isEqualTo(DrinkType.COFFEE);
     }
+
+    @Test
+    void should_return_HOT_CHOCOLATE_from_H_instruction() {
+        assertThat(DrinkType.fromInstruction("H")).isEqualTo(DrinkType.HOT_CHOCOLATE);
+    }
 }
