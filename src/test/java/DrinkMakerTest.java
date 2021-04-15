@@ -11,6 +11,11 @@ public class DrinkMakerTest {
         assertThat(drinkMaker.makeFrom("T")).isInstanceOf(Tea.class);
     }
 
+  @Test
+    void should_make_a_tea_with_1_sugar_when_receive_a_T_1() {
+        assertThat(drinkMaker.makeFrom("T:1")).isEqualTo(new Tea(1));
+    }
+
     @Test
     void should_make_a_hot_chocolate_when_receive_H() {
         assertThat(drinkMaker.makeFrom("H")).isInstanceOf(HotChocolate.class);
