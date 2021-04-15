@@ -4,16 +4,15 @@ public enum DrinkType {
     COFFEE;
 
     public static DrinkType fromInstruction(String instruction) {
-        if (instruction.equals("T")) {
-            return TEA;
-        }
-        if (instruction.equals("C")) {
-            return COFFEE;
-        }
-        if (instruction.equals("H")) {
-            return HOT_CHOCOLATE;
-        } else {
-            throw new IllegalArgumentException("Sorry! Can't serve your that!");
+        switch (instruction) {
+            case "T":
+                return TEA;
+            case "C":
+                return COFFEE;
+            case "H":
+                return HOT_CHOCOLATE;
+            default:
+                throw new IllegalArgumentException("Sorry! Can't serve your that!");
         }
     }
 }
