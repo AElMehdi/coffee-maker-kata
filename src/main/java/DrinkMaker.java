@@ -3,6 +3,9 @@ public class DrinkMaker {
         if (order.equals("T")) {
             return new Tea();
         }
-        return new HotChocolate();
+        if (order.equals("H")) {
+            return new HotChocolate();
+        }
+        return new Coffee();
     }
 }
