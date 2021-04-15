@@ -9,8 +9,11 @@ public enum DrinkType {
         }
         if (instruction.equals("C")) {
             return COFFEE;
-        } else {
+        }
+        if (instruction.equals("H")) {
             return HOT_CHOCOLATE;
+        } else {
+            throw new IllegalArgumentException("Sorry! Can't serve your that!");
         }
     }
 }
