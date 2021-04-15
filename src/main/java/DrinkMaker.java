@@ -10,7 +10,7 @@ public class DrinkMaker {
         }
 
         if (machineOrder.getDrinkType().equals(DrinkType.HOT_CHOCOLATE)) {
-            return new HotChocolate(amountOfSugar);
+            return new HotChocolate(amountOfSugar, isStick(machineOrder));
         }
 
         return new Coffee(amountOfSugar);

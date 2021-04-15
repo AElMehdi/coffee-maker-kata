@@ -44,12 +44,17 @@ public class DrinkMakerTest {
 
    @Test
     void should_make_a_hot_chocolate_with_1_sugar_when_receive_H_1() {
-        assertThat(drinkMaker.makeFrom("H:1")).isEqualTo(new HotChocolate(1));
+        assertThat(drinkMaker.makeFrom("H:1")).isEqualTo(new HotChocolate(1, true));
     }
 
    @Test
     void should_make_a_hot_chocolate_with_2_sugar_when_receive_H_2() {
-        assertThat(drinkMaker.makeFrom("H:2")).isEqualTo(new HotChocolate(2));
+        assertThat(drinkMaker.makeFrom("H:2")).isEqualTo(new HotChocolate(2, true));
+    }
+
+    @Test
+    void should_serve_a_hot_chocolate_with_a_stick_when_ordered_with_sugar_a_H_3() {
+        assertThat(drinkMaker.makeFrom("H:3")).isEqualTo(new HotChocolate(3, true));
     }
 
     @Test
