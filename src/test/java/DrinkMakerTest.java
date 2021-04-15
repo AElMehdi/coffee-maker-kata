@@ -38,6 +38,11 @@ public class DrinkMakerTest {
 
     @Test
     void should_make_a_coffee_when_receive_C() {
-        assertThat(drinkMaker.makeFrom("C")).isInstanceOf(Coffee.class);
+        assertThat(drinkMaker.makeFrom("C")).isEqualTo(new Coffee(0));
+    }
+
+    @Test
+    void should_make_a_coffee_with_two_sugars_when_receive_C_2() {
+        assertThat(drinkMaker.makeFrom("C:2")).isEqualTo(new Coffee(2));
     }
 }

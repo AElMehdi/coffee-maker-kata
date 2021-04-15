@@ -18,6 +18,7 @@ public class DrinkMaker {
         if (drink.equals("H")) {
             return new HotChocolate(amountOfSugar);
         }
-        return new Coffee();
+
+        return new Coffee(amountOfSugar);
     }
 }
