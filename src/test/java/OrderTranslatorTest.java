@@ -9,10 +9,15 @@ class OrderTranslatorTest {
         Order order = OrderTranslator.toOrder("T::");
         assertThat(order).isEqualTo(new TeaOrder(0));
     }
-
     @Test
     void should_return_a_tea_order_with_sugar_when_passed_a_T_1_instruction() {
         Order order = OrderTranslator.toOrder("T:1:");
         assertThat(order).isEqualTo(new TeaOrder(1));
+    }
+
+    @Test
+    void should_return_a_coffee_order_when_passed_a_C_instruction() {
+        Order order = OrderTranslator.toOrder("C::");
+        assertThat(order).isEqualTo(new CoffeeOrder(0));
     }
 }
