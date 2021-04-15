@@ -14,12 +14,12 @@ public class DrinkMakerTest {
 
     @Test
     void should_make_a_tea_when_receive_T() {
-        assertThat(drinkMaker.makeFrom("T::")).isEqualTo(new Tea(0));
+        assertThat(drinkMaker.makeFrom("T:")).isEqualTo(new Tea(0));
     }
 
     @Test
     void should_serve_a_tea_without_a_stick_when_receive_T() {
-        assertThat(drinkMaker.makeFrom("T::")).isEqualTo(new Tea(0, false));
+        assertThat(drinkMaker.makeFrom("T:")).isEqualTo(new Tea(0, false));
     }
 
     @Test
@@ -30,6 +30,11 @@ public class DrinkMakerTest {
   @Test
     void should_make_a_tea_with_2_sugars_when_receive_a_T_2() {
         assertThat(drinkMaker.makeFrom("T:2")).isEqualTo(new Tea(2));
+    }
+
+    @Test
+    void should_serve_a_tea_with_a_stick_when_ordered_with_sugar_a_T_3() {
+        assertThat(drinkMaker.makeFrom("T:3")).isEqualTo(new Tea(3, true));
     }
 
     @Test

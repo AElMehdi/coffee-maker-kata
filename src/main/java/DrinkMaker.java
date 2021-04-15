@@ -3,16 +3,17 @@ public class DrinkMaker {
 
     public Drink makeFrom(String customerOrder) {
         MachineOrder machineOrder = OrderTranslator.toMachineOrder(customerOrder);
+        int amountOfSugar = machineOrder.getAmountOfSugar();
 
         if (machineOrder.getDrinkType().equals(DrinkType.TEA)) {
-            return new Tea(machineOrder.getAmountOfSugar(), false);
+            return new Tea(amountOfSugar, amountOfSugar > 0);
         }
 
         if (machineOrder.getDrinkType().equals(DrinkType.HOT_CHOCOLATE)) {
-            return new HotChocolate(machineOrder.getAmountOfSugar());
+            return new HotChocolate(amountOfSugar);
         }
 
-        return new Coffee(machineOrder.getAmountOfSugar());
+        return new Coffee(amountOfSugar);
     }
 
 }
