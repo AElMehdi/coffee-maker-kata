@@ -6,7 +6,7 @@ public class DrinkMaker {
         int amountOfSugar = machineOrder.getAmountOfSugar();
 
         if (machineOrder.getDrinkType().equals(DrinkType.TEA)) {
-            return new Tea(amountOfSugar, amountOfSugar > 0);
+            return new Tea(amountOfSugar, isStick(machineOrder));
         }
 
         if (machineOrder.getDrinkType().equals(DrinkType.HOT_CHOCOLATE)) {
@@ -16,4 +16,7 @@ public class DrinkMaker {
         return new Coffee(amountOfSugar);
     }
 
+    private boolean isStick(MachineOrder machineOrder) {
+        return machineOrder.hasSugar();
+    }
 }

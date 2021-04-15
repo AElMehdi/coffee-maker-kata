@@ -14,4 +14,8 @@ public class MachineOrder {
     public int getAmountOfSugar() {
         return amountOfSugar;
     }
+
+    public boolean hasSugar() {
+        return this.amountOfSugar > 0;
+    }
 }
