@@ -1,3 +1,3 @@
-public class Tea {
+public class Tea implements Drink {
 
 }

@@ -1,5 +1,8 @@
 public class DrinkMaker {
-    public Tea makeFrom(String order) {
-        return new Tea();
+    public Drink makeFrom(String order) {
+        if (order.equals("T")) {
+            return new Tea();
+        }
+        return new HotChocolate();
     }
 }
