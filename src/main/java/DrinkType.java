@@ -1,19 +1,13 @@
 public enum DrinkType {
-    HOT_CHOCOLATE("H"),
-    TEA("T"),
-    COFFEE("C");
-
-    private String value;
+    HOT_CHOCOLATE,
+    TEA,
+    COFFEE;
 
     public static DrinkType fromInstruction(String instruction) {
-        return TEA;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-    DrinkType(String value) {
-        this.value = value;
+        if (instruction.equals("T")) {
+            return TEA;
+        } else {
+            return COFFEE;
+        }
     }
 }
