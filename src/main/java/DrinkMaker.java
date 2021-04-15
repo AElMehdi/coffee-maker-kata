@@ -1,6 +1,5 @@
 public class DrinkMaker {
 
-
     public Drink makeFrom(String customerOrder) {
         MachineOrder machineOrder = OrderTranslator.toMachineOrder(customerOrder);
         int amountOfSugar = machineOrder.getAmountOfSugar();

@@ -24,6 +24,8 @@ public class OrderTranslator {
     }
 
     public static Order toOrder(String instructions) {
-        return new TeaOrder(0);
+        String[] orderInstructions = instructions.split(INSTRUCTIONS_SEPARATOR);
+
+        return new TeaOrder(getAmountOfSugar(orderInstructions));
     }
 }
