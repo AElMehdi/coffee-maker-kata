@@ -1,14 +1,25 @@
+import static java.lang.Integer.*;
+
 public class OrderTranslator {
 
+    public static final String INSTRUCTIONS_SEPARATOR = ":";
+
     public static MachineOrder toMachineOrder(String customerOrder) {
-        String[] orderInstructions = customerOrder.split(":");
-        DrinkType drink = DrinkType.fromInstruction(orderInstructions[0]);
+        String[] orderInstructions = customerOrder.split(INSTRUCTIONS_SEPARATOR);
 
-        int amountOfSugar = 0;
-        if (orderInstructions.length > 1) {
-            amountOfSugar = Integer.parseInt(orderInstructions[1]);
-        }
+        return new MachineOrder(getDrink(orderInstructions), getAmountOfSugar(orderInstructions));
+    }
 
-        return new MachineOrder(drink, amountOfSugar);
+    private static DrinkType getDrink(String[] orderInstructions) {
+        String drinkInstruction = orderInstructions[0];
+        return DrinkType.from(drinkInstruction);
+    }
+
+    private static int getAmountOfSugar(String[] orderInstructions) {
+        return hasSugar(orderInstructions) ? parseInt(orderInstructions[1]) : 0;
+    }
+
+    private static boolean hasSugar(String[] orderInstructions) {
+        return orderInstructions.length > 1;
     }
 }

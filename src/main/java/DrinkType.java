@@ -3,7 +3,7 @@ public enum DrinkType {
     TEA,
     COFFEE;
 
-    public static DrinkType fromInstruction(String instruction) {
+    public static DrinkType from(String instruction) {
         switch (instruction) {
             case "T":
                 return TEA;

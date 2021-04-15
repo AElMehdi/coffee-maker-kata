@@ -7,22 +7,22 @@ class DrinkTypeTest {
 
     @Test
     void should_return_TEA_from_T_instruction() {
-        assertThat(DrinkType.fromInstruction("T")).isEqualTo(DrinkType.TEA);
+        assertThat(DrinkType.from("T")).isEqualTo(DrinkType.TEA);
     }
 
     @Test
     void should_return_COFFEE_from_C_instruction() {
-        assertThat(DrinkType.fromInstruction("C")).isEqualTo(DrinkType.COFFEE);
+        assertThat(DrinkType.from("C")).isEqualTo(DrinkType.COFFEE);
     }
 
     @Test
     void should_return_HOT_CHOCOLATE_from_H_instruction() {
-        assertThat(DrinkType.fromInstruction("H")).isEqualTo(DrinkType.HOT_CHOCOLATE);
+        assertThat(DrinkType.from("H")).isEqualTo(DrinkType.HOT_CHOCOLATE);
     }
 
     @Test
     void should_throw_an_exception_when_passed_an_unknown_instruction() {
-        assertThatThrownBy(() -> DrinkType.fromInstruction("UNKNOWN"))
+        assertThatThrownBy(() -> DrinkType.from("UNKNOWN"))
                 .hasMessageContaining("Sorry")
                 .isInstanceOf(IllegalArgumentException.class);
     }
