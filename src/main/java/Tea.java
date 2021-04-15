@@ -20,11 +20,11 @@ public class Tea implements Drink {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Tea tea = (Tea) o;
-        return amountOfSugar == tea.amountOfSugar;
+        return amountOfSugar == tea.amountOfSugar && stick == tea.stick;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amountOfSugar);
+        return Objects.hash(amountOfSugar, stick);
     }
 }

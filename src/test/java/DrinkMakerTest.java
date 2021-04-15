@@ -24,12 +24,12 @@ public class DrinkMakerTest {
 
     @Test
     void should_make_a_tea_with_1_sugar_when_receive_a_T_1() {
-        assertThat(drinkMaker.makeFrom("T:1")).isEqualTo(new Tea(1));
+        assertThat(drinkMaker.makeFrom("T:1")).isEqualTo(new Tea(1, true));
     }
 
   @Test
     void should_make_a_tea_with_2_sugars_when_receive_a_T_2() {
-        assertThat(drinkMaker.makeFrom("T:2")).isEqualTo(new Tea(2));
+        assertThat(drinkMaker.makeFrom("T:2")).isEqualTo(new Tea(2, true));
     }
 
     @Test
