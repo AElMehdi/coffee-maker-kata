@@ -15,8 +15,8 @@ public class DrinkMaker {
         if (drink.equals("T")) {
             return new Tea(amountOfSugar);
         }
-        if (order.equals("H")) {
-            return new HotChocolate();
+        if (drink.equals("H")) {
+            return new HotChocolate(amountOfSugar);
         }
         return new Coffee();
     }
