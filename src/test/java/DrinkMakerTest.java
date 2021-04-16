@@ -99,4 +99,9 @@ public class DrinkMakerTest {
     void should_not_make_coffee_if_provided_with_less_than_6_cents() {
         assertThat(drinkMaker.makeFrom("C:::2")).isEqualTo(null);
     }
+
+    @Test
+    void should_make_coffee_if_provided_with_6_cents() {
+        assertThat(drinkMaker.makeFrom("C:::6")).isEqualTo(new Coffee(0));
+    }
 }
