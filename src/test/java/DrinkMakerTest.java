@@ -3,18 +3,25 @@ import drinks.HotChocolate;
 import drinks.Tea;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 
+@ExtendWith(MockitoExtension.class)
 public class DrinkMakerTest {
 
     public static final String TEA_COMMAND_WITH_PRICE = "T:::4";
 
+    @Mock
+    private Display display;
     private DrinkMaker drinkMaker;
 
     @BeforeEach
     void initialize() {
-        drinkMaker = new DrinkMaker();
+        drinkMaker = new DrinkMaker(display);
     }
 
     @Test
@@ -106,5 +113,12 @@ public class DrinkMakerTest {
     @Test
     void should_make_coffee_if_provided_with_6_cents() {
         assertThat(drinkMaker.makeFrom("C:::6")).isEqualTo(new Coffee(0));
+    }
+
+    @Test
+    void should_get_a_message_containing_4_when_provided_with_2_and_asked_for_a_coffee() {
+        drinkMaker.makeFrom("C:::2");
+
+        verify(display).print("Amount needed 4");
     }
 }
