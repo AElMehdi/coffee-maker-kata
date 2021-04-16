@@ -23,4 +23,9 @@ public class DrinkMakerOrangeTest {
     void should_make_an_orange_when_receive_O() {
         assertThat(drinkMaker.makeFrom("O:::")).isEqualTo(new Orange(0));
     }
+
+    @Test
+    void should_make_an_orange_with_sugar_and_serve_with_a_stick_when_passed_O_3() {
+        assertThat(drinkMaker.makeFrom("O:3::")).isEqualTo(new Orange(3, true));
+    }
 }
