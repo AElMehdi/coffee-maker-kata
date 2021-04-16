@@ -13,7 +13,7 @@ public class OrderTranslator {
             case TEA:
                 return new TeaOrder(getAmountOfSugar(orderInstructions), getAmountOfMoney(orderInstructions));
             case HOT_CHOCOLATE:
-                return new HotChocolateOrder(getAmountOfSugar(orderInstructions));
+                return new HotChocolateOrder(getAmountOfSugar(orderInstructions), getAmountOfMoney(orderInstructions));
             default:
                 throw new IllegalArgumentException("Oopsy! Looks like something went wrong with your order.");
         }

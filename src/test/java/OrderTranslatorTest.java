@@ -31,14 +31,14 @@ class OrderTranslatorTest {
 
     @Test
     void should_return_a_hot_chocolate_order_when_passed_a_H_instruction() {
-        Order order = OrderTranslator.toOrder("H::");
-        assertThat(order).isEqualTo(new HotChocolateOrder(0));
+        Order order = OrderTranslator.toOrder("H:::5");
+        assertThat(order).isEqualTo(new HotChocolateOrder(0, 5));
     }
 
     @Test
     void should_return_a_hot_chocolate_order_with_sugar_when_passed_a_H_1_instruction() {
-        Order order = OrderTranslator.toOrder("H:1:");
-        assertThat(order).isEqualTo(new HotChocolateOrder(1));
+        Order order = OrderTranslator.toOrder("H:1::5");
+        assertThat(order).isEqualTo(new HotChocolateOrder(1, 5));
     }
 
     @Test
