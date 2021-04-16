@@ -1,3 +1,7 @@
+import orders.CoffeeOrder;
+import orders.HotChocolateOrder;
+import orders.Order;
+import orders.TeaOrder;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

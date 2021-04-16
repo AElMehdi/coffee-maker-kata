@@ -1,3 +1,8 @@
+package orders;
+
+import drinks.Drink;
+import drinks.HotChocolate;
+
 import java.util.Objects;
 
 public class HotChocolateOrder implements Order {

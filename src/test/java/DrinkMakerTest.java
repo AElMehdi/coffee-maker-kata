@@ -1,3 +1,6 @@
+import drinks.Coffee;
+import drinks.HotChocolate;
+import drinks.Tea;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

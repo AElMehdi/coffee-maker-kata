@@ -1,3 +1,5 @@
+package drinks;
+
 public enum DrinkType {
     HOT_CHOCOLATE,
     TEA,

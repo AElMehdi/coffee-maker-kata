@@ -1,3 +1,7 @@
+package orders;
+
+import drinks.Drink;
+
 public interface Order {
     Drink process();
 

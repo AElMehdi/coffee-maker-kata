@@ -1,3 +1,9 @@
+import orders.CoffeeOrder;
+import orders.HotChocolateOrder;
+import orders.Order;
+import orders.TeaOrder;
+import drinks.DrinkType;
+
 import static java.lang.Integer.parseInt;
 
 public class OrderTranslator {
