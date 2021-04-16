@@ -59,6 +59,7 @@ public class DrinkMakerTest {
     void should_make_a_hot_chocolate_when_receive_H() {
         assertThat(drinkMaker.makeFrom("H:::5")).isEqualTo(new HotChocolate(0));
     }
+
     @Test
     void should_make_a_hot_chocolate_with_1_sugar_when_receive_H_1() {
         assertThat(drinkMaker.makeFrom("H:1::5")).isEqualTo(new HotChocolate(1, true));
@@ -77,6 +78,11 @@ public class DrinkMakerTest {
     @Test
     void should_not_make_hot_chocolate_if_provided_with_less_than_5_cents() {
         assertThat(drinkMaker.makeFrom("H:::3")).isEqualTo(null);
+    }
+
+    @Test
+    void should_not_make_hot_chocolate_if_provided_with_5_cents() {
+        assertThat(drinkMaker.makeFrom("H:::5")).isEqualTo(new HotChocolate(0));
     }
 
     @Test
