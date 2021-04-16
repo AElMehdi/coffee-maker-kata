@@ -9,16 +9,22 @@ public class CoffeeOrder implements Order {
     public static final int PRICE = 6;
     private final int amountOfSugar;
     private final int amountOfMoney;
+    private final boolean extraHot;
 
     public CoffeeOrder(int amountOfSugar, int amountOfMoney) {
+        this(amountOfSugar, amountOfMoney, false);
+    }
+
+    public CoffeeOrder(int amountOfSugar, int amountOfMoney, boolean extraHot) {
         this.amountOfSugar = amountOfSugar;
         this.amountOfMoney = amountOfMoney;
+        this.extraHot = extraHot;
     }
 
     @Override
     public Drink process() {
         return isEqualToPrice(amountOfMoney, PRICE) ?
-                new Coffee(amountOfSugar, isStick())
+                new Coffee(amountOfSugar, isStick(), extraHot)
                 : new NoDrink(PRICE - amountOfMoney);
     }
 

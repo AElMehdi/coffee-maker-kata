@@ -76,4 +76,12 @@ public class DrinkMakerCoffeeTest {
 
         verify(display).print("C:0:1:");
     }
+
+    @Test
+    void should_make_an_extra_hot_coffee_when_passed_Ch() {
+        String withoutSugar = "Ch:::6";
+        drinkMaker.makeFrom(withoutSugar);
+
+        verify(display).print("Ch:0:1:");
+    }
 }

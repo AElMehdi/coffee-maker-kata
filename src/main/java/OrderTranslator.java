@@ -2,6 +2,7 @@ import drinks.DrinkType;
 import orders.*;
 
 import static java.lang.Integer.parseInt;
+import static java.lang.String.*;
 
 public class OrderTranslator {
 
@@ -12,7 +13,7 @@ public class OrderTranslator {
 
         switch (getDrink(orderInstructions)) {
             case COFFEE:
-                return new CoffeeOrder(getAmountOfSugar(orderInstructions), getAmountOfMoney(orderInstructions));
+                return new CoffeeOrder(getAmountOfSugar(orderInstructions), getAmountOfMoney(orderInstructions), extraHot(orderInstructions));
             case TEA:
                 return new TeaOrder(getAmountOfSugar(orderInstructions), getAmountOfMoney(orderInstructions));
             case HOT_CHOCOLATE:
@@ -32,7 +33,13 @@ public class OrderTranslator {
 
     private static DrinkType getDrink(String[] orderInstructions) {
         String drinkInstruction = orderInstructions[0];
-        return DrinkType.from(drinkInstruction);
+        char drink = drinkInstruction.charAt(0);
+        return DrinkType.from(valueOf(drink));
+    }
+
+    private static boolean extraHot(String[] orderInstructions) {
+        String drinkInstruction = orderInstructions[0];
+        return drinkInstruction.length() > 1;
     }
 
     private static int getAmountOfSugar(String[] orderInstructions) {
