@@ -30,7 +30,11 @@ public class Coffee implements Drink {
 
     @Override
     public String toString() {
-        return "C:" + amountOfSugar + ":0:";
+        return "C:" + amountOfSugar + ":" + isStickToInt() + ":";
+    }
+
+    private int isStickToInt() {
+        return stick ? 0 : 1;
     }
 
 }
