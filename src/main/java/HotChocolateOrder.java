@@ -1,6 +1,7 @@
 import java.util.Objects;
 
 public class HotChocolateOrder implements Order {
+    public static final int PRICE = 5;
     private final int amountOfSugar;
     private final int amountOfMoney;
 
@@ -11,7 +12,9 @@ public class HotChocolateOrder implements Order {
 
     @Override
     public Drink process() {
-        return amountOfMoney >= 5 ? new HotChocolate(amountOfSugar, isStick()) : null;
+        return isEqualToPrice(amountOfMoney, PRICE) ?
+                new HotChocolate(amountOfSugar, isStick())
+                : null;
     }
 
     private boolean isStick() {
