@@ -26,7 +26,16 @@ public class OrderTranslator {
     }
 
     private static int getAmountOfSugar(String[] orderInstructions) {
-        return hasSugar(orderInstructions) ? parseInt(orderInstructions[1]) : 0;
+        String amountOfSugar = getAmountOfSugarIfExist(orderInstructions);
+        return hasSugar(orderInstructions) ? parseInt(toZeroIfEmpty(amountOfSugar)) : 0;
+    }
+
+    private static String getAmountOfSugarIfExist(String[] orderInstructions) {
+        return orderInstructions.length > 1 ? orderInstructions[1] : "";
+    }
+
+    private static String toZeroIfEmpty(String amountOfSugar) {
+        return amountOfSugar.isEmpty() ? "0" : amountOfSugar;
     }
 
     private static boolean hasSugar(String[] orderInstructions) {

@@ -42,6 +42,12 @@ class OrderTranslatorTest {
     }
 
     @Test
+    void should_treat_an_empty_sugar_parameter_as_0() {
+        Order order = OrderTranslator.toOrder("T:::2");
+        assertThat(order).isEqualTo(new TeaOrder(0));
+    }
+
+    @Test
     void should_throw_an_exception_when_passed_an_alpha_as_amount_of_sugar() {
         assertThatThrownBy(() -> OrderTranslator.toOrder("H:A:"))
                 .isInstanceOf(NumberFormatException.class);
