@@ -27,4 +27,10 @@ public class Coffee implements Drink {
     public int hashCode() {
         return Objects.hash(amountOfSugar, stick);
     }
+
+    @Override
+    public String toString() {
+        return "C:3:0:";
+    }
+
 }
