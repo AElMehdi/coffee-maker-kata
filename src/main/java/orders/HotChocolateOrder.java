@@ -19,7 +19,7 @@ public class HotChocolateOrder implements Order {
     public Drink process() {
         return isEqualToPrice(amountOfMoney, PRICE) ?
                 new HotChocolate(amountOfSugar, isStick())
-                : null;
+                : new NoDrink(PRICE - amountOfMoney);
     }
 
     private boolean isStick() {

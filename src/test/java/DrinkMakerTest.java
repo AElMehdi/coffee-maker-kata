@@ -1,6 +1,7 @@
 import drinks.Coffee;
 import drinks.HotChocolate;
 import drinks.Tea;
+import orders.NoDrink;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -50,8 +51,8 @@ public class DrinkMakerTest {
     }
 
     @Test
-    void should_not_make_tea_if_provided_with_less_than_4_cents() {
-        assertThat(drinkMaker.makeFrom("T:::2")).isEqualTo(null);
+    void should_return_a_No_Drink_if_provided_with_2_and_asked_for_a_tea() {
+        assertThat(drinkMaker.makeFrom("T:::2")).isInstanceOf(NoDrink.class);
     }
 
     @Test
@@ -86,8 +87,8 @@ public class DrinkMakerTest {
     }
 
     @Test
-    void should_not_make_hot_chocolate_if_provided_with_less_than_5_cents() {
-        assertThat(drinkMaker.makeFrom("H:::3")).isEqualTo(null);
+    void should_return_a_No_Drink_if_provided_with_less_than_5_cents_and_asked_for_a_hot_chocolate() {
+        assertThat(drinkMaker.makeFrom("H:::3")).isInstanceOf(NoDrink.class);
     }
 
     @Test
@@ -106,8 +107,8 @@ public class DrinkMakerTest {
     }
 
     @Test
-    void should_not_make_coffee_if_provided_with_less_than_6_cents() {
-        assertThat(drinkMaker.makeFrom("C:::2")).isEqualTo(null);
+    void should_return_a_No_Drink_if_provided_with_less_than_6_cents_and_asked_for_a_coffee() {
+        assertThat(drinkMaker.makeFrom("C:::2")).isInstanceOf(NoDrink.class);
     }
 
     @Test
@@ -120,5 +121,12 @@ public class DrinkMakerTest {
         drinkMaker.makeFrom("C:::2");
 
         verify(display).print("Amount needed 4");
+    }
+
+    @Test
+    void should_get_a_message_containing_3_when_provided_with_3_and_asked_for_a_coffee() {
+        drinkMaker.makeFrom("C:::3");
+
+        verify(display).print("Amount needed 3");
     }
 }
