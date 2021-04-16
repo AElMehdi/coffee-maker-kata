@@ -30,7 +30,7 @@ public class Coffee implements Drink {
 
     @Override
     public String toString() {
-        return "C:3:0:";
+        return "C:" + amountOfSugar + ":0:";
     }
 
 }

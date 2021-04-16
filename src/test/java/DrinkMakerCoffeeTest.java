@@ -61,4 +61,11 @@ public class DrinkMakerCoffeeTest {
 
         verify(display).print("C:3:0:");
     }
+
+    @Test
+    void should_get_a_message_containing_C_2_0_when_passed_same_command_with_the_right_price() {
+        drinkMaker.makeFrom("C:2::6");
+
+        verify(display).print("C:2:0:");
+    }
 }
