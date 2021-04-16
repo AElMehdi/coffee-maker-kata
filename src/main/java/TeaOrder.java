@@ -2,14 +2,16 @@ import java.util.Objects;
 
 public class TeaOrder implements Order {
     private final int amountOfSugar;
+    private final int amountOfMoney;
 
-    public TeaOrder(int amountOfSugar) {
+    public TeaOrder(int amountOfSugar, int amountOfMoney) {
         this.amountOfSugar = amountOfSugar;
+        this.amountOfMoney = amountOfMoney;
     }
 
     @Override
     public Drink process() {
-        return new Tea(amountOfSugar, isStick());
+        return amountOfMoney >= 4 ? new Tea(amountOfSugar, isStick()) : null;
     }
 
     private boolean isStick() {
@@ -21,11 +23,11 @@ public class TeaOrder implements Order {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TeaOrder teaOrder = (TeaOrder) o;
-        return amountOfSugar == teaOrder.amountOfSugar;
+        return amountOfSugar == teaOrder.amountOfSugar && amountOfMoney == teaOrder.amountOfMoney;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(amountOfSugar);
+        return Objects.hash(amountOfSugar, amountOfMoney);
     }
 }

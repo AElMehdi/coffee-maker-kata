@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class DrinkMakerTest {
 
+    public static final String TEA_COMMAND_WITH_PRICE = "T:::4";
+
     private DrinkMaker drinkMaker;
 
     @BeforeEach
@@ -14,27 +16,32 @@ public class DrinkMakerTest {
 
     @Test
     void should_make_a_tea_when_receive_T() {
-        assertThat(drinkMaker.makeFrom("T:")).isEqualTo(new Tea(0));
+        assertThat(drinkMaker.makeFrom(TEA_COMMAND_WITH_PRICE)).isEqualTo(new Tea(0));
     }
 
     @Test
     void should_serve_a_tea_without_a_stick_when_receive_T() {
-        assertThat(drinkMaker.makeFrom("T:")).isEqualTo(new Tea(0, false));
+        assertThat(drinkMaker.makeFrom(TEA_COMMAND_WITH_PRICE)).isEqualTo(new Tea(0, false));
     }
 
     @Test
     void should_make_a_tea_with_1_sugar_when_receive_a_T_1() {
-        assertThat(drinkMaker.makeFrom("T:1")).isEqualTo(new Tea(1, true));
+        assertThat(drinkMaker.makeFrom("T:1::4")).isEqualTo(new Tea(1, true));
     }
 
-  @Test
+    @Test
     void should_make_a_tea_with_2_sugars_when_receive_a_T_2() {
-        assertThat(drinkMaker.makeFrom("T:2")).isEqualTo(new Tea(2, true));
+        assertThat(drinkMaker.makeFrom("T:2::4")).isEqualTo(new Tea(2, true));
     }
 
     @Test
     void should_serve_a_tea_with_a_stick_when_ordered_with_sugar_a_T_3() {
-        assertThat(drinkMaker.makeFrom("T:3")).isEqualTo(new Tea(3, true));
+        assertThat(drinkMaker.makeFrom("T:3::4")).isEqualTo(new Tea(3, true));
+    }
+
+    @Test
+    void should_not_make_tea_if_provided_with_less_than_4_cents() {
+        assertThat(drinkMaker.makeFrom("T:::2")).isEqualTo(null);
     }
 
     @Test
@@ -42,12 +49,12 @@ public class DrinkMakerTest {
         assertThat(drinkMaker.makeFrom("H")).isEqualTo(new HotChocolate(0));
     }
 
-   @Test
+    @Test
     void should_make_a_hot_chocolate_with_1_sugar_when_receive_H_1() {
         assertThat(drinkMaker.makeFrom("H:1")).isEqualTo(new HotChocolate(1, true));
     }
 
-   @Test
+    @Test
     void should_make_a_hot_chocolate_with_2_sugar_when_receive_H_2() {
         assertThat(drinkMaker.makeFrom("H:2")).isEqualTo(new HotChocolate(2, true));
     }

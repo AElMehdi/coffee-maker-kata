@@ -11,7 +11,7 @@ public class OrderTranslator {
             case COFFEE:
                 return new CoffeeOrder(getAmountOfSugar(orderInstructions));
             case TEA:
-                return new TeaOrder(getAmountOfSugar(orderInstructions));
+                return new TeaOrder(getAmountOfSugar(orderInstructions), getAmountOfMoney(orderInstructions));
             case HOT_CHOCOLATE:
                 return new HotChocolateOrder(getAmountOfSugar(orderInstructions));
             default:
@@ -20,18 +20,24 @@ public class OrderTranslator {
 
     }
 
+    private static int getAmountOfMoney(String[] orderInstructions) {
+        String amountOfMoney = parseNumericInstruction(orderInstructions, 3);
+        return Integer.parseInt(amountOfMoney);
+    }
+
     private static DrinkType getDrink(String[] orderInstructions) {
         String drinkInstruction = orderInstructions[0];
         return DrinkType.from(drinkInstruction);
     }
 
     private static int getAmountOfSugar(String[] orderInstructions) {
-        String amountOfSugar = getAmountOfSugarIfExist(orderInstructions);
-        return parseInt(toZeroIfEmpty(amountOfSugar));
+        String amountOfSugar = parseNumericInstruction(orderInstructions, 1);
+        return parseInt(amountOfSugar);
     }
 
-    private static String getAmountOfSugarIfExist(String[] orderInstructions) {
-        return orderInstructions.length > 1 ? orderInstructions[1] : "";
+    private static String parseNumericInstruction(String[] orderInstructions, int index) {
+        String numericAsString = orderInstructions.length > index ? orderInstructions[index] : "";
+        return toZeroIfEmpty(numericAsString);
     }
 
     private static String toZeroIfEmpty(String amountOfSugar) {

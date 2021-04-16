@@ -7,14 +7,14 @@ class OrderTranslatorTest {
 
     @Test
     void should_return_a_tea_order_when_passed_a_T_instruction() {
-        Order order = OrderTranslator.toOrder("T::");
-        assertThat(order).isEqualTo(new TeaOrder(0));
+        Order order = OrderTranslator.toOrder("T:::4");
+        assertThat(order).isEqualTo(new TeaOrder(0, 4));
     }
 
     @Test
     void should_return_a_tea_order_with_sugar_when_passed_a_T_1_instruction() {
-        Order order = OrderTranslator.toOrder("T:1:");
-        assertThat(order).isEqualTo(new TeaOrder(1));
+        Order order = OrderTranslator.toOrder("T:1::4");
+        assertThat(order).isEqualTo(new TeaOrder(1, 4));
     }
 
     @Test
@@ -43,13 +43,25 @@ class OrderTranslatorTest {
 
     @Test
     void should_treat_an_empty_sugar_parameter_as_0() {
-        Order order = OrderTranslator.toOrder("T:::2");
-        assertThat(order).isEqualTo(new TeaOrder(0));
+        Order order = OrderTranslator.toOrder("T:::4");
+        assertThat(order).isEqualTo(new TeaOrder(0, 4));
     }
 
     @Test
     void should_throw_an_exception_when_passed_an_alpha_as_amount_of_sugar() {
         assertThatThrownBy(() -> OrderTranslator.toOrder("H:A:"))
+                .isInstanceOf(NumberFormatException.class);
+    }
+
+    @Test
+    void should_treat_an_empty_money_parameter_as_0() {
+        Order order = OrderTranslator.toOrder("T:2::");
+        assertThat(order).isEqualTo(new TeaOrder(2, 0));
+    }
+
+    @Test
+    void should_throw_an_exception_when_passed_an_alpha_as_amount_of_money() {
+        assertThatThrownBy(() -> OrderTranslator.toOrder("T:2::Z"))
                 .isInstanceOf(NumberFormatException.class);
     }
 }
