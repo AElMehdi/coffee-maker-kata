@@ -19,14 +19,14 @@ class OrderTranslatorTest {
 
     @Test
     void should_return_a_coffee_order_when_passed_a_C_instruction() {
-        Order order = OrderTranslator.toOrder("C::");
-        assertThat(order).isEqualTo(new CoffeeOrder(0));
+        Order order = OrderTranslator.toOrder("C:::6");
+        assertThat(order).isEqualTo(new CoffeeOrder(0, 6));
     }
 
     @Test
     void should_return_a_coffee_order_with_sugar_when_passed_a_C_1_instruction() {
-        Order order = OrderTranslator.toOrder("C:1:");
-        assertThat(order).isEqualTo(new CoffeeOrder(1));
+        Order order = OrderTranslator.toOrder("C:1::6");
+        assertThat(order).isEqualTo(new CoffeeOrder(1, 6));
     }
 
     @Test

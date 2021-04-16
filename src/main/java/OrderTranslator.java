@@ -9,7 +9,7 @@ public class OrderTranslator {
 
         switch (getDrink(orderInstructions)) {
             case COFFEE:
-                return new CoffeeOrder(getAmountOfSugar(orderInstructions));
+                return new CoffeeOrder(getAmountOfSugar(orderInstructions), getAmountOfMoney(orderInstructions));
             case TEA:
                 return new TeaOrder(getAmountOfSugar(orderInstructions), getAmountOfMoney(orderInstructions));
             case HOT_CHOCOLATE:

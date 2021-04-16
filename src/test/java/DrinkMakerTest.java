@@ -86,17 +86,17 @@ public class DrinkMakerTest {
     }
 
     @Test
-    void should_make_a_coffee_when_receive_C() {
-        assertThat(drinkMaker.makeFrom("C")).isEqualTo(new Coffee(0));
-    }
-
-    @Test
     void should_make_a_coffee_with_two_sugars_when_receive_C_2() {
-        assertThat(drinkMaker.makeFrom("C:2")).isEqualTo(new Coffee(2, true));
+        assertThat(drinkMaker.makeFrom("C:2::6")).isEqualTo(new Coffee(2, true));
     }
 
     @Test
     void should_serve_a_coffee_with_a_stick_when_ordered_with_sugar_a_C_3() {
-        assertThat(drinkMaker.makeFrom("C:3")).isEqualTo(new Coffee(3, true));
+        assertThat(drinkMaker.makeFrom("C:3::6")).isEqualTo(new Coffee(3, true));
+    }
+
+    @Test
+    void should_not_make_coffee_if_provided_with_less_than_6_cents() {
+        assertThat(drinkMaker.makeFrom("C:::2")).isEqualTo(null);
     }
 }
