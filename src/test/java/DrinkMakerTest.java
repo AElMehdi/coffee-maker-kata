@@ -49,6 +49,12 @@ public class DrinkMakerTest {
         assertThat(drinkMaker.makeFrom("T:::4")).isEqualTo(new Tea(0));
     }
 
+
+    @Test
+    void should_make_tea_if_provided_with_more_than_4_cents() {
+        assertThat(drinkMaker.makeFrom("T:::50")).isEqualTo(new Tea(0));
+    }
+
     @Test
     void should_make_a_hot_chocolate_when_receive_H() {
         assertThat(drinkMaker.makeFrom("H")).isEqualTo(new HotChocolate(0));
