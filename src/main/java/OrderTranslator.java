@@ -26,11 +26,6 @@ public class OrderTranslator {
 
     }
 
-    private static int getAmountOfMoney(String[] orderInstructions) {
-        String amountOfMoney = parseNumericInstruction(orderInstructions, 3);
-        return Integer.parseInt(amountOfMoney);
-    }
-
     private static DrinkType getDrink(String[] orderInstructions) {
         String drinkInstruction = orderInstructions[0];
         char drink = drinkInstruction.charAt(0);
@@ -40,6 +35,11 @@ public class OrderTranslator {
     private static boolean extraHot(String[] orderInstructions) {
         String drinkInstruction = orderInstructions[0];
         return drinkInstruction.length() > 1;
+    }
+
+    private static int getAmountOfMoney(String[] orderInstructions) {
+        String amountOfMoney = parseNumericInstruction(orderInstructions, 3);
+        return Integer.parseInt(amountOfMoney);
     }
 
     private static int getAmountOfSugar(String[] orderInstructions) {
@@ -52,8 +52,8 @@ public class OrderTranslator {
         return toZeroIfEmpty(numericAsString);
     }
 
-    private static String toZeroIfEmpty(String amountOfSugar) {
-        return amountOfSugar.isEmpty() ? "0" : amountOfSugar;
+    private static String toZeroIfEmpty(String amount) {
+        return amount.isEmpty() ? "0" : amount;
     }
 
 }
