@@ -1,14 +1,16 @@
+package drinks;
+
 import java.util.Objects;
 
-public class Coffee implements Drink {
+public class HotChocolate implements Drink {
     private final int amountOfSugar;
     private final boolean stick;
 
-    public Coffee(int amountOfSugar) {
+    public HotChocolate(int amountOfSugar) {
         this(amountOfSugar, false);
     }
 
-    public Coffee(int amountOfSugar, boolean stick) {
+    public HotChocolate(int amountOfSugar, boolean stick) {
         this.amountOfSugar = amountOfSugar;
         this.stick = stick;
     }
@@ -17,8 +19,8 @@ public class Coffee implements Drink {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Coffee coffee = (Coffee) o;
-        return amountOfSugar == coffee.amountOfSugar && stick == coffee.stick;
+        HotChocolate that = (HotChocolate) o;
+        return amountOfSugar == that.amountOfSugar && stick == that.stick;
     }
 
     @Override

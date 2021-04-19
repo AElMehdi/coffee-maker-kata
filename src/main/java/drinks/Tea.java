@@ -1,3 +1,5 @@
+package drinks;
+
 import java.util.Objects;
 
 public class Tea implements Drink {
