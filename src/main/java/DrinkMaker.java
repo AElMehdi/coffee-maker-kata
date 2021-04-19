@@ -12,11 +12,11 @@ public class DrinkMaker {
     public Drink makeFrom(String customerOrder) {
         Order order = OrderTranslator.toOrder(customerOrder);
 
-        Drink processedOrder = order.process();
+        Drink drink = order.process();
 
-        display.print(processedOrder.toString());
+        display.print(drink.toString());
 
-        return processedOrder;
+        return drink;
     }
 
 }
