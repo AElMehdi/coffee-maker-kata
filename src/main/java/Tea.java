@@ -9,4 +9,13 @@ public class Tea implements Order {
 
     public Tea() {
     }
+
+    @Override
+    public String toString() {
+        return "T:" + sugar + ":" + hasSugar();
+    }
+
+    private String hasSugar() {
+        return sugar > 0 ? "0" : "1";
+    }
 }
