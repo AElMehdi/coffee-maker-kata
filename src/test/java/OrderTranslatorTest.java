@@ -15,6 +15,12 @@ class OrderTranslatorTest {
     }
 
     @Test
+    void should_generate_T_1_0_instruction_when_asked_to_make_a_tea_with_sugar() {
+        Order tea = new Tea(1);
+        assertThat(OrderTranslator.translate(tea)).isEqualTo("T:1:0");
+    }
+
+    @Test
     void should_generate_C_instruction_when_asked_to_make_a_coffee() {
         Order coffee = new Coffee();
         assertThat(OrderTranslator.translate(coffee)).isEqualTo("C:");
