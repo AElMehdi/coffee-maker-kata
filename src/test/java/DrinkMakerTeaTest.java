@@ -1,5 +1,6 @@
 import drinks.Tea;
 import orders.NoDrink;
+import orders.OrderPojo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,14 +18,16 @@ public class DrinkMakerTeaTest {
     Display display;
     DrinkMaker drinkMaker;
 
-    public DrinkMakerTeaTest() {
-    }
-
     @BeforeEach
     void initialize() {
         drinkMaker = new DrinkMaker(display);
     }
 
+    @Test
+    void should_generate_T_instruction_when_asked_to_make_a_tea() {
+        OrderPojo order = new Tea();
+        assertThat(DrinkConverter.translate(order)).isEqualTo("T:");
+    }
     @Test
     void should_make_a_tea_when_receive_T() {
         assertThat(drinkMaker.makeFrom(TEA_COMMAND_WITH_PRICE)).isEqualTo(new Tea(0));

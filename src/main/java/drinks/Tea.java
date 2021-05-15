@@ -1,8 +1,10 @@
 package drinks;
 
+import orders.OrderPojo;
+
 import java.util.Objects;
 
-public class Tea implements Drink {
+public class Tea implements Drink, OrderPojo {
 
     private int amountOfSugar;
     private boolean stick;
@@ -14,6 +16,10 @@ public class Tea implements Drink {
 
     public Tea(int amountOfSugar) {
         this(amountOfSugar, false);
+    }
+
+    public Tea() {
+
     }
 
 
