@@ -1,18 +1,18 @@
 import orders.Order;
 
-public class Coffee implements Order {
+public class HotChocolate implements Order {
     private int sugar;
 
-    public Coffee(int sugar) {
+    public HotChocolate(int sugar) {
         this.sugar = sugar;
     }
 
-    public Coffee() {
+    public HotChocolate() {
     }
 
     @Override
     public String toString() {
-        return "C:" + sugar + ":" + hasSugar();
+        return "H:" + sugar + ":" + hasSugar();
     }
 
     private String hasSugar() {

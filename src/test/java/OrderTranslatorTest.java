@@ -21,8 +21,26 @@ class OrderTranslatorTest {
     }
 
     @Test
-    void should_generate_C_instruction_when_asked_to_make_a_coffee() {
+    void should_generate_C_0_1_instruction_when_asked_to_make_a_coffee() {
         Order coffee = new Coffee();
-        assertThat(OrderTranslator.translate(coffee)).isEqualTo("C:");
+        assertThat(OrderTranslator.translate(coffee)).isEqualTo("C:0:1");
+    }
+
+    @Test
+    void should_generate_C_2_0_instruction_when_asked_to_make_a_coffee_with_2_sugar() {
+        Order coffee = new Coffee(2);
+        assertThat(OrderTranslator.translate(coffee)).isEqualTo("C:2:0");
+    }
+
+    @Test
+    void should_generate_H_0_1_instruction_when_asked_to_make_a_coffee() {
+        Order hotChocolate = new HotChocolate();
+        assertThat(OrderTranslator.translate(hotChocolate)).isEqualTo("H:0:1");
+    }
+
+    @Test
+    void should_generate_H_2_0_instruction_when_asked_to_make_a_coffee_with_2_sugar() {
+        Order hotChocolate = new HotChocolate(2);
+        assertThat(OrderTranslator.translate(hotChocolate)).isEqualTo("H:2:0");
     }
 }
