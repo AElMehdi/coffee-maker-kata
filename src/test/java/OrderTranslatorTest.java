@@ -1,71 +1,46 @@
-import orders.CoffeeOrder;
-import orders.HotChocolateOrder;
 import orders.Order;
-import orders.TeaOrder;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
+@ExtendWith(MockitoExtension.class)
 class OrderTranslatorTest {
 
     @Test
-    void should_return_a_tea_order_when_passed_a_T_instruction() {
-        Order order = OrderTranslator.toOrder("T:::4");
-        assertThat(order).isEqualTo(new TeaOrder(0, 4));
+    void should_generate_T_0_1_instruction_when_asked_to_make_a_tea() {
+        Order tea = new Tea();
+        assertThat(OrderTranslator.translate(tea)).isEqualTo("T:0:1");
     }
 
     @Test
-    void should_return_a_tea_order_with_sugar_when_passed_a_T_1_instruction() {
-        Order order = OrderTranslator.toOrder("T:1::4");
-        assertThat(order).isEqualTo(new TeaOrder(1, 4));
+    void should_generate_T_1_0_instruction_when_asked_to_make_a_tea_with_sugar() {
+        Order tea = new Tea(1);
+        assertThat(OrderTranslator.translate(tea)).isEqualTo("T:1:0");
     }
 
     @Test
-    void should_return_a_coffee_order_when_passed_a_C_instruction() {
-        Order order = OrderTranslator.toOrder("C:::6");
-        assertThat(order).isEqualTo(new CoffeeOrder(0, 6));
+    void should_generate_C_0_1_instruction_when_asked_to_make_a_coffee() {
+        Order coffee = new Coffee();
+        assertThat(OrderTranslator.translate(coffee)).isEqualTo("C:0:1");
     }
 
     @Test
-    void should_return_a_coffee_order_with_sugar_when_passed_a_C_1_instruction() {
-        Order order = OrderTranslator.toOrder("C:1::6");
-        assertThat(order).isEqualTo(new CoffeeOrder(1, 6));
+    void should_generate_C_2_0_instruction_when_asked_to_make_a_coffee_with_2_sugar() {
+        Order coffee = new Coffee(2);
+        assertThat(OrderTranslator.translate(coffee)).isEqualTo("C:2:0");
     }
 
     @Test
-    void should_return_a_hot_chocolate_order_when_passed_a_H_instruction() {
-        Order order = OrderTranslator.toOrder("H:::5");
-        assertThat(order).isEqualTo(new HotChocolateOrder(0, 5));
+    void should_generate_H_0_1_instruction_when_asked_to_make_a_coffee() {
+        Order hotChocolate = new HotChocolate();
+        assertThat(OrderTranslator.translate(hotChocolate)).isEqualTo("H:0:1");
     }
 
     @Test
-    void should_return_a_hot_chocolate_order_with_sugar_when_passed_a_H_1_instruction() {
-        Order order = OrderTranslator.toOrder("H:1::5");
-        assertThat(order).isEqualTo(new HotChocolateOrder(1, 5));
-    }
-
-    @Test
-    void should_treat_an_empty_sugar_parameter_as_0() {
-        Order order = OrderTranslator.toOrder("T:::4");
-        assertThat(order).isEqualTo(new TeaOrder(0, 4));
-    }
-
-    @Test
-    void should_throw_an_exception_when_passed_an_alpha_as_amount_of_sugar() {
-        assertThatThrownBy(() -> OrderTranslator.toOrder("H:A:"))
-                .isInstanceOf(NumberFormatException.class);
-    }
-
-    @Test
-    void should_treat_an_empty_money_parameter_as_0() {
-        Order order = OrderTranslator.toOrder("T:2::");
-        assertThat(order).isEqualTo(new TeaOrder(2, 0));
-    }
-
-    @Test
-    void should_throw_an_exception_when_passed_an_alpha_as_amount_of_money() {
-        assertThatThrownBy(() -> OrderTranslator.toOrder("T:2::Z"))
-                .isInstanceOf(NumberFormatException.class);
+    void should_generate_H_2_0_instruction_when_asked_to_make_a_coffee_with_2_sugar() {
+        Order hotChocolate = new HotChocolate(2);
+        assertThat(OrderTranslator.translate(hotChocolate)).isEqualTo("H:2:0");
     }
 }
