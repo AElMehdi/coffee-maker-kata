@@ -9,9 +9,9 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 class OrderTranslatorTest {
 
     @Test
-    void should_generate_T_instruction_when_asked_to_make_a_tea() {
+    void should_generate_T_0_1_instruction_when_asked_to_make_a_tea() {
         Order tea = new Tea();
-        assertThat(OrderTranslator.translate(tea)).isEqualTo("T:");
+        assertThat(OrderTranslator.translate(tea)).isEqualTo("T:0:1");
     }
 
     @Test
