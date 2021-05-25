@@ -1,4 +1,4 @@
-import orders.Order;
+package orders;
 
 public class Coffee implements Order {
     private int sugar;
@@ -11,11 +11,7 @@ public class Coffee implements Order {
     }
 
     @Override
-    public String toString() {
-        return "C:" + sugar + ":" + hasSugar();
-    }
-
-    private String hasSugar() {
-        return sugar > 0 ? "0" : "1";
+    public String print() {
+        return "C:" + sugar + ":" + hasSugar(sugar);
     }
 }
